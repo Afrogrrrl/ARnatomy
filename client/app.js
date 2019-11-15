@@ -1,10 +1,13 @@
 import React from 'react'
-import Camera from './components/Camera.js'
+import Navbar from './components/navbar'
+import Routes from './components/routes'
 
 const App = () => {
   return (
     <div>
-      <Camera/>
+      <h1>ARnatomy: See the real you</h1>
+      <Navbar />
+      <Routes />
     </div>
   )
 }
