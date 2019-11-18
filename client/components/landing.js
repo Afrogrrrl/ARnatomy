@@ -17,7 +17,8 @@ const Landing = () => {
             <div className="card-body">
               <h5 className="card-title">See the real you</h5>
               <p className="card-text">
-                ARnatomy is a tool to visualize the you underneath.
+                ARnatomy is an Augmented Reality (AR) tool to visualize the you
+                underneath.
               </p>
               <h5 className="card-title">Pick your view</h5>
               <p className="card-text">
