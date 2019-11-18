@@ -100,21 +100,21 @@ class PoseNet extends Component {
   poseDetectionFrame(canvasContext) {
     const {
       algorithm,
-      imageScaleFactor, 
-      flipHorizontal, 
-      outputStride, 
-      minPoseConfidence, 
-      minPartConfidence, 
-      maxPoseDetections, 
-      nmsRadius, 
-      videoWidth, 
-      videoHeight, 
-      showVideo, 
-      showPoints, 
-      showSkeleton, 
-      skeletonColor, 
-      skeletonLineWidth 
-      } = this.props
+      imageScaleFactor,
+      flipHorizontal,
+      outputStride,
+      minPoseConfidence,
+      minPartConfidence,
+      maxPoseDetections,
+      nmsRadius,
+      videoWidth,
+      videoHeight,
+      showVideo,
+      showPoints,
+      showSkeleton,
+      skeletonColor,
+      skeletonLineWidth
+    } = this.props
 
     const posenetModel = this.posenet
     const video = this.video
@@ -125,22 +125,22 @@ class PoseNet extends Component {
       switch (algorithm) {
         case 'multi-pose': {
           poses = await posenetModel.estimateMultiplePoses(
-          video, 
-          imageScaleFactor, 
-          flipHorizontal, 
-          outputStride, 
-          maxPoseDetections, 
-          minPartConfidence, 
-          nmsRadius
+            video,
+            imageScaleFactor,
+            flipHorizontal,
+            outputStride,
+            maxPoseDetections,
+            minPartConfidence,
+            nmsRadius
           )
           break
         }
         case 'single-pose': {
           const pose = await posenetModel.estimateSinglePose(
-          video, 
-          imageScaleFactor, 
-          flipHorizontal, 
-          outputStride
+            video,
+            imageScaleFactor,
+            flipHorizontal,
+            outputStride
           )
           poses.push(pose)
           break
@@ -186,9 +186,40 @@ class PoseNet extends Component {
   render() {
     return (
       <div>
-        <div>
-          <video id="videoNoShow" playsInline ref={this.getVideo} />
-          <canvas className="webcam" ref={this.getCanvas} />
+        <div id="cameraElements">
+          <div id="camera">
+            <video id="videoNoShow" playsInline ref={this.getVideo} />
+            <canvas className="webcam" ref={this.getCanvas} />
+          </div>
+          <div id="cameraDropdown">
+            <p>Choose your ARnatomy view</p>
+            <button
+              className="btn btn-secondary btn-lg dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Views
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button className="dropdown-item" type="button">
+                Skeletal System
+              </button>
+              <button className="dropdown-item" type="button">
+                Muscular System
+              </button>
+              <button className="dropdown-item" type="button">
+                Cardiovascular System
+              </button>
+              <button className="dropdown-item" type="button">
+                Nervous System
+              </button>
+              <button className="dropdown-item" type="button">
+                Immune/Lymphatic System
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     )

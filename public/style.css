@@ -12,3 +12,16 @@
   -webkit-transform: scaleX(-1);
   display: none !important;
 }
+
+#cameraElements {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav.nav-tabs {
+  justify-content: center;
+}
+
+#card3 {
+  border: none;
+}
